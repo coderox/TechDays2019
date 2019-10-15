@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace TechDays2019
+namespace MyWpfApp
 {
     /// <summary>
     /// Interaction logic for App.xaml
