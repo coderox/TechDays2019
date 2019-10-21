@@ -1,23 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Threading.Tasks;
 
 namespace MyWpfApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -25,9 +11,21 @@ namespace MyWpfApp
             InitializeComponent();
         }
 
-        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        private async void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+           Application.Current.Shutdown();
+           //await CallWindowsRuntimeApisAsync();
         }
+
+#region Windows Runtime API's
+        // private async Task CallWindowsRuntimeApisAsync()
+        // {
+        //     var locator = new Windows.Devices.Geolocation.Geolocator();
+        //     var location = await locator.GetGeopositionAsync();
+        //     var position = location.Coordinate.Point.Position;
+        //     var latlong = string.Format("lat:{0}, long:{1}", position.Latitude, position.Longitude);
+        //     var result = MessageBox.Show(latlong);
+        // }
     }
+#endregion
 }
