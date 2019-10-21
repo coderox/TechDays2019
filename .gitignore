@@ -6,3 +6,5 @@
 /Debug/**
 */Debug/**
 */x64/**
+*/Generated Files/**
+*/packages/**
