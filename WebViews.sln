@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebViews", "WebViews\WebViews.csproj", "{83FB6541-29C3-4BC3-9255-4F329DF309D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebViews", "WebView.WPF\WebViews.csproj", "{83FB6541-29C3-4BC3-9255-4F329DF309D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FE1BD20D-029C-4F72-980E-0E841D1C1E6B}
+		SolutionGuid = {00039664-E7EA-4696-ABCA-96BC4E3FCBB0}
 	EndGlobalSection
 EndGlobal
