@@ -1,37 +1,31 @@
 extern crate winrt;
 
 use winrt::*; // import various helper types
-use winrt::windows::foundation::*; // import namespace Windows.System.Diagnostics
-use winrt::windows::web::syndication::*;
-use winrt::windows::security::credentials::*;
 use winrt::windows::data::xml::dom::*;
 use winrt::windows::ui::notifications::*;
-
-// fn Sample() {
-//     let base = FastHString::new("http://kennykerr.ca");
-//     let relative = FastHString::new("feed");
-//     let uri = Uri::create_with_relative_uri(&base, &relative).unwrap();
-//     let client = SyndicationClient::create_syndication_client();
-//     // SyndicationClient client;
-//     // SyndicationFeed feed = co_await client.RetrieveFeedAsync(uri);
-
-//     // for (SyndicationItem item : feed.Items()) {
-//     //     hstring title = item.Title().Text();
-//     //     printf("%ls\n", title.c_str());
-//     // }
-// }
+use winrt::windows::system::diagnostics::*;
 
 fn main() {
+    dump_processes();
     toast();
-    //init_apartment(ApartmentType::MTA);
-    // let infos = ProcessDiagnosticInfo::get_for_processes().unwrap().unwrap();
-    // println!("Currently executed processes ({}):", infos.get_size().unwrap());
-    // for p in &infos {
-    //     let p = p.unwrap();
-    //     let pid = p.get_process_id().unwrap();
-    //     let exe = p.get_executable_file_name().unwrap();
-    //     println!("[{}] {}", pid, exe);
-    // }
+}
+
+fn dump_processes() {
+    // Get a list processes
+    let infos = ProcessDiagnosticInfo::get_for_processes().unwrap().unwrap();
+    
+    // Output the number of processes
+    println!("Current processes ({}):", infos.get_size().unwrap());
+    
+    // Iterate over all of the processes
+    for p in &infos {
+        let p = p.unwrap();
+        let pid = p.get_process_id().unwrap();
+        let exe = p.get_executable_file_name().unwrap();
+        
+        // Output process id and executable name
+        println!("[{}] {}", pid, exe);
+    }
 }
 
 
@@ -40,7 +34,7 @@ fn toast() {
     let toast_xml = ToastNotificationManager::get_template_content(ToastTemplateType::ToastText02).unwrap().unwrap();
 
     // Fill in the text elements
-    let toast_text_elements = toast_xml.get_elements_by_tag_name(&FastHString::new("text")).unwrap().unwrap();
+    let toast_text_elements = toast_xml.get_elements_by_tag_name(&FastHString::new("text")).unwrap().unwrap(); 
     
     toast_text_elements.item(0).unwrap().unwrap().append_child(&toast_xml.create_text_node(&FastHString::new("Hello from Rust!")).unwrap().unwrap().query_interface::<IXmlNode>().unwrap()).unwrap();
     toast_text_elements.item(1).unwrap().unwrap().append_child(&toast_xml.create_text_node(&FastHString::new("This is some more text.")).unwrap().unwrap().query_interface::<IXmlNode>().unwrap()).unwrap();
