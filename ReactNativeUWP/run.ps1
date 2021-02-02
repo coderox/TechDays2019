@@ -1,1 +1,0 @@
-Invoke-Expression -Command:"react-native run-windows"
